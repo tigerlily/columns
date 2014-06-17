@@ -14,6 +14,11 @@ module Columns
   def self.execute(schema_dir: './db/', models_dir: './app/models/')
     schema_path = File.expand_path(File.join(schema_dir,'schema.rb'))
 
+    unless File.exists?(schema_path)
+      puts "COLUMNS ERROR : #{schema_path} doesn't exist!"
+      exit 1
+    end
+
     table = Table.new(File.read(schema_path))
 
     # create RawData for each tables

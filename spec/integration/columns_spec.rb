@@ -16,18 +16,30 @@ describe Columns do
     end
 
     skip 'on already annotated models', :speed => 'slow' do
-
     end
 
   end
 
   context 'when there is no schema' do
-    skip 'outputs an error message' do
+    it 'outputs an error message', :speed => 'slow' do
+      schema_dir = 'spec/'
+      models_dir = 'spec/fixtures'
 
+      lambda do
+        expect(STDOUT).to receive(:puts).with(/^COLUMNS ERROR.*/)
+        Columns.execute(schema_dir: schema_dir, models_dir: models_dir)
+      end
     end
 
-    skip 'exits with status code 1' do
+    it 'exits with status code 1', :speed => 'slow' do
+      schema_dir = 'spec/'
+      models_dir = 'spec/fixtures'
 
+      begin
+        Columns.execute(schema_dir: schema_dir, models_dir: models_dir)
+      rescue SystemExit => ex
+        expect(ex.status).to eq 1
+      end
     end
   end
 end

@@ -1,6 +1,6 @@
 module Columns
 
-  # Public: Stores data about a model.
+  # Stores data about a model.
   #
   # Model name
   # ----------
@@ -20,12 +20,16 @@ module Columns
   #     #  integer "foo"
   class ModelData
 
-    # Public: Get the model's name. For a model `app/models/user.rb`,
+    # Public: Get the String model's name. For a model `app/models/user.rb`,
     # the model's name will be `user`.
     attr_reader :name
 
+    # Public: Get a String formatted content.
     attr_reader :content
 
+    # Public: Creates a new ModelData.
+    #
+    # raw_data - A RawData object.
     def initialize(raw_data)
       # Ok, this is really idiot, I know, I know. Must use inflectors in
       # the future.

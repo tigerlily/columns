@@ -1,12 +1,23 @@
 module Columns
 
-  # Public: Add schema info to the end of a ruby model.
+  # Add schema info to the end of a ruby model.
   class ModelWriter
 
+    # Public: Creates a new ModelWriter.
+    #
+    # path - String relative or absolute path to the models directory.
+    #        It's handy to be able to change the path during tests.
+    #        Default is './app/models/'.
     def initialize(path: './app/models/')
       @path = path
     end
 
+    # Public: Puts model data and meta data to the end of a model file.
+    #
+    # model_data - A ModelData, used to deduce the model file and to
+    #              grab data.
+    #
+    # Returns nothing.
     def add_info(model_data)
       @model_data = model_data
       ensure_file_end_with_empty_line

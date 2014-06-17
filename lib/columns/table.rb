@@ -1,9 +1,9 @@
 module Columns
 
-  # Public: Represents data for the tables found in schema.
+  # Represents data for the tables found in schema.
   class Table
 
-    # Public:
+    # Public: Creates a new Table.
     #
     # schema - The db/schema.rb as a String.
     def initialize(schema)

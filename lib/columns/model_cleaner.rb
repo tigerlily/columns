@@ -1,6 +1,6 @@
 module Columns
 
-  # Public: This class is responsible of removing a possible schema info
+  # This class is responsible of removing a possible schema info
   # from a ruby model file. Note that it isn't any attempt to actually
   # check if we really deals with a model.
   class ModelCleaner

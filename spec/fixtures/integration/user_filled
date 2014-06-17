@@ -1,0 +1,8 @@
+class User
+
+end
+
+# == Schema Information
+#
+#  integer "id",                   null: false
+#  string  "name"

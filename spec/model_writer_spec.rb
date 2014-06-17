@@ -2,10 +2,8 @@ require 'spec_helper'
 
 describe ModelWriter do
 
-  before do
-    remove_user_rb
-    create_clean_user_rb
-  end
+  before { create_clean_user_rb }
+  after { remove_user_rb }
 
   it 'writes schema info to the end of a file' do
     writer = ModelWriter.new(path: fixtures_path)

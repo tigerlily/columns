@@ -2,33 +2,5 @@
 
 require 'columns'
 
-# find all tables in the schema
-schema_file = File.expand_path('./db/schema.rb')
-
-unless File.exists?(schema_file)
-  puts "COLUMNS ERROR : #{schema_file} doesn't exist!"
-  exit 1
-end
-table = Columns::Table.new(File.read(schema_file))
-
-# create RawData for each tables
-raw_data_objects = []
-table.names.each do |name|
-  raw_data_objects << Columns::RawData.new(name, table.content_for(name))
-end
-
-# create ModelData from each RawData
-model_data_objects = raw_data_objects.map do |o|
-  Columns::ModelData.new(o)
-end
-
-# clean all models using ModelCleaner
-# write all models using ModelData
-writer = Columns::ModelWriter.new
-model_data_objects.each do |o|
-  path = File.expand_path('./app/models/' + o.name + '.rb')
-  Columns::ModelCleaner.clean(path)
-  writer.add_info(o)
-end
-
+Columns.execute
 

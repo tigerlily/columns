@@ -21,16 +21,6 @@ describe Columns do
   end
 
   context 'when there is no schema' do
-    it 'outputs an error message', :speed => 'slow' do
-      schema_dir = 'spec/'
-      models_dir = 'spec/fixtures'
-
-      lambda do
-        expect(STDOUT).to receive(:puts).with(/^COLUMNS ERROR.*/)
-        Columns.execute(schema_dir: schema_dir, models_dir: models_dir)
-      end
-    end
-
     it 'exits with status code 1', :speed => 'slow' do
       schema_dir = 'spec/'
       models_dir = 'spec/fixtures'

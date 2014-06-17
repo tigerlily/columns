@@ -22,11 +22,21 @@ Or install it yourself as:
 
     $ cd your_project
 
-Once you have generate a `db/schema.rb`, just type
+Once you have generate a `db/schema.rb`, just type the following to
+annotate your models:
 
     $ columns
 
-to annotate your models.
+### Do it programmaticaly
+
+Instead of using Columns as a shell command, you can use it as a
+library. To do so, call the following method:
+
+``` ruby
+require 'columns'
+
+Columns.execute
+```
 
 Note that models must to reside in `app/models`.
 

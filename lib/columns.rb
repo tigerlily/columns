@@ -11,6 +11,16 @@ require "columns/extended_content"
 # That could be handy when your application don't use Rails.
 module Columns
 
+  # Public: Annotate models.
+  #
+  # schema_dir - String directory (absolute or relative) to find the
+  #              `schema.rb` file. Default is `./db/`.
+  # models_dir - String directory (absolute or relative) to find the
+  #              models. Default is `./app/models/`.
+  #
+  # Returns nothing.
+  #
+  # Raises SystemExit if the `schema.rb` doesn't exist.
   def self.execute(schema_dir: './db/', models_dir: './app/models/')
     application = Application.new(schema_dir, models_dir)
     application.execute
@@ -21,6 +31,9 @@ module Columns
   # The tool chain.
   class Application
 
+    # Creates a new Application.
+    #
+    # See Columns.execute for arguments.
     def initialize(schema_dir, models_dir)
       @models_dir = models_dir
       schema_path = File.expand_path(File.join(schema_dir,'schema.rb'))
@@ -41,6 +54,9 @@ module Columns
       end
     end
 
+    # Cleans then writes models.
+    #
+    # Returns nothing.
     def execute
       writer = ModelWriter.new(path: @models_dir)
       @model_data_objects.each do |object|

@@ -34,6 +34,8 @@ module Columns
     # Creates a new Application.
     #
     # See Columns.execute for arguments.
+    #
+    # Raises SystemExit if it can't find the `schema.rb`.
     def initialize(schema_dir, models_dir)
       @models_dir = models_dir
       schema_path = File.expand_path(File.join(schema_dir,'schema.rb'))

@@ -1,4 +1,4 @@
-# Columns
+# Columns [![Gem Version](https://badge.fury.io/rb/columns.svg)](http://badge.fury.io/rb/columns)
 
 Annotates activerecord models using `db/schema.rb`.
 

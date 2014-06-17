@@ -3,20 +3,17 @@ module Columns
   # Represents data for the tables found in schema.
   class Table
 
+    # Public: Find the table names.
+    #
+    # Returns an Array of String.
+    attr_reader :names
+
     # Public: Creates a new Table.
     #
     # schema - The db/schema.rb as a String.
     def initialize(schema)
-      # Records the original schema file. TODO See if it's really needed.
-      @schema = schema
       @schema_lines = schema.split("\n")
-    end
-
-    # Public: Find the table names.
-    #
-    # Returns an Array of String.
-    def names
-      @schema_lines.map {|line| Regex.table_name(line) }.compact
+      @names = @schema_lines.map {|line| Regex.table_name(line) }.compact
     end
 
     # Public: Get the column names and types for a given table.

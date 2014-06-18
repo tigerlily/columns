@@ -21,7 +21,10 @@ describe Columns do
   end
 
   context 'when there is no schema' do
+
     it 'exits with status code 1', :speed => 'slow' do
+      # Silence output.
+      allow_any_instance_of(Columns::Application).to receive(:puts)
       schema_dir = 'spec/'
       models_dir = 'spec/fixtures'
 
@@ -31,5 +34,7 @@ describe Columns do
         expect(ex.status).to eq 1
       end
     end
+
   end
+
 end

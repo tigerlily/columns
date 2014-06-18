@@ -5,7 +5,7 @@ describe Table do
   before { @table = Table.new(schema_file) }
 
   it 'find the right count of tables in the schema' do
-    expect(@table.names.size).to eq 4
+    expect(@table.names.size).to eq 5
   end
 
   it 'find the right count of tables in a fake schema' do
@@ -14,7 +14,7 @@ describe Table do
   end
 
   it "find the right table's names in the schema" do
-    names = ['assignments', 'products', 'users', 'users_3']
+    names = ['assignments', 'products', 'users', 'users_3', 'policies']
     @table.names.each do |name|
       expect(names.include?(name)).to be true
     end

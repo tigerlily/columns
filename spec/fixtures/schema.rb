@@ -39,5 +39,8 @@ ActiveRecord::Schema.define(version: 20140522124819) do
     t.string  "name"
   end
 
+  create_table "policies", force: true do |t|
+    t.string  "name"
+  end
 end
 

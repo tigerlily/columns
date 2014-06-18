@@ -1,3 +1,5 @@
+require 'active_support/inflector'
+
 module Columns
 
   # Stores data about a model.
@@ -31,9 +33,7 @@ module Columns
     #
     # raw_data - A RawData object.
     def initialize(raw_data)
-      # Ok, this is really idiot, I know, I know. Must use inflectors in
-      # the future.
-      @name = raw_data.name[0...-1]
+      @name = raw_data.name.singularize
 
       contents = raw_data.content.split("\n")
       contents.map! {|line| "#  #{line.gsub(/^\s*t\./, '')}\n" }

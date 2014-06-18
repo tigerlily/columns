@@ -12,6 +12,7 @@ module Columns
     # Returns nothing.
     def self.clean(file_path)
       %x( sed -i -e '/# == Schema Info/,$d' #{file_path}  > /dev/null 2>&1 )
+      %x( sed -i -e '${/^$/d;}' #{file_path} > /dev/null 2>&1 )
     end
   end
 end

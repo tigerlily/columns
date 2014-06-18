@@ -9,7 +9,7 @@ module Columns
     #
     # Returns the String extended content.
     def self.from(content)
-      "# == Schema Information\n#\n#{content}"
+      "\n# == Schema Information\n#\n#{content}"
     end
   end
 end

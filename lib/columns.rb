@@ -1,5 +1,6 @@
 require "columns/version"
 require "columns/table"
+require "columns/schema_parser"
 require "columns/regex"
 require "columns/raw_data"
 require "columns/model_data"

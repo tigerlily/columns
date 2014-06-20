@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Columns do
 
+  it { is_expected.to respond_to(:execute) }
+
   describe 'executes the application' do
     before { create_clean_user_rb }
     after { remove_user_rb }

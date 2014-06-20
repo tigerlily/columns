@@ -31,11 +31,18 @@ module Columns
 
     # Public: Creates a new ModelData.
     #
-    # raw_data - A RawData object.
-    def initialize(raw_data)
-      @name = raw_data.name.singularize
+    # name    - String name of the table.
+    # content - String content (column's names and types) of the table.
+    #
+    # Examples
+    #
+    #   tables     = SchemaParser.new(schema).parse
+    #   model_data = ModelData.new(*tables.assoc('policies'))
+    #   model_data.name #=> 'policy'
+    def initialize(name, content)
+      @name = name.singularize
 
-      contents = raw_data.content.split("\n")
+      contents = content.split("\n")
       contents.map! {|line| "#  #{line.gsub(/^\s*t\./, '')}\n" }
       @content = contents.join
     end

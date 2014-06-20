@@ -44,6 +44,9 @@ module Columns
         puts "COLUMNS ERROR : #{schema_path} doesn't exist!"
         exit 1
       end
+      # TODO Table.new should be able to take either a path or an IO.
+      #   This removes the need to check for error here (above).
+      #   The check will be in Table.
       table = Table.new(File.read(schema_path))
 
       raw_data_objects = []

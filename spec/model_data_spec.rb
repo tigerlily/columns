@@ -5,8 +5,7 @@ describe ModelData do
   context 'with a simple singular' do
     before do
       tables = SchemaParser.new(schema_file).parse
-      raw = RawData.new('assignments', tables['assignments'])
-      @subject = ModelData.new(raw)
+      @subject = ModelData.new(*tables.assoc('assignments'))
     end
 
     it 'provides the name of the model' do
@@ -22,8 +21,7 @@ describe ModelData do
   context 'with a complex singular' do
     before do
       tables = SchemaParser.new(schema_file).parse
-      raw = RawData.new('policies', tables['policies'])
-      @subject = ModelData.new(raw)
+      @subject = ModelData.new(*tables.assoc('policies'))
     end
 
     it 'provides the name of the model' do

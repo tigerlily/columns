@@ -1,7 +1,6 @@
 require "columns/version"
 require "columns/schema_parser"
 require "columns/regex"
-require "columns/raw_data"
 require "columns/model_data"
 require "columns/model_cleaner"
 require "columns/model_writer"
@@ -17,6 +16,14 @@ module Columns
   #              `schema.rb` file. Default is `./db/`.
   # models_dir - String directory (absolute or relative) to find the
   #              models. Default is `./app/models/`.
+  #
+  # Examples
+  #
+  #   require 'columns'
+  #   Columns.execute
+  #
+  #   # With a custom models directory:
+  #   Columns.execute(models_dir: './my/custom/models/dir')
   #
   # Returns nothing.
   #
@@ -47,17 +54,7 @@ module Columns
 
       tables = SchemaParser.new(File.read(schema_path)).parse
 
-      raw_data_objects = []
-
-      # TODO Do we really need RawData now that we have an hash with
-      #   SchemaParser#parse?
-      tables.each do |name, content|
-        raw_data_objects << RawData.new(name, content)
-      end
-
-      @model_data_objects = raw_data_objects.map do |object|
-        ModelData.new(object)
-      end
+      @model_data_objects = tables.map {|assoc| ModelData.new(*assoc) }
     end
 
     # Cleans then writes models.

@@ -5,7 +5,7 @@ describe SchemaParser do
   describe '#parse' do
     it 'returns a hash' do
       hash = SchemaParser.new(schema_file).parse
-      expect(hash).to be_a(Hash)
+      expect(hash).to be_an(Hash)
     end
   end
 

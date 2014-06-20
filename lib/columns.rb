@@ -1,5 +1,4 @@
 require "columns/version"
-require "columns/table"
 require "columns/schema_parser"
 require "columns/regex"
 require "columns/raw_data"
@@ -45,14 +44,15 @@ module Columns
         puts "COLUMNS ERROR : #{schema_path} doesn't exist!"
         exit 1
       end
-      # TODO Table.new should be able to take either a path or an IO.
-      #   This removes the need to check for error here (above).
-      #   The check will be in Table.
-      table = Table.new(File.read(schema_path))
+
+      tables = SchemaParser.new(File.read(schema_path)).parse
 
       raw_data_objects = []
-      table.names.each do |name|
-        raw_data_objects << RawData.new(name, table.content_for(name))
+
+      # TODO Do we really need RawData now that we have an hash with
+      #   SchemaParser#parse?
+      tables.each do |name, content|
+        raw_data_objects << RawData.new(name, content)
       end
 
       @model_data_objects = raw_data_objects.map do |object|

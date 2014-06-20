@@ -3,8 +3,8 @@ require 'spec_helper'
 describe RawData do
 
   before do
-    table = Table.new(schema_file)
-    @subject = RawData.new('assignments', table.content_for('assignments'))
+    tables = SchemaParser.new(schema_file).parse
+    @subject = RawData.new('assignments', tables['assignments'])
   end
 
   it 'stores the raw table name' do

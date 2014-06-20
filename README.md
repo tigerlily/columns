@@ -1,4 +1,4 @@
-# Columns [![Gem Version](https://badge.fury.io/rb/columns.svg)](http://badge.fury.io/rb/columns) [![Inline docs](http://inch-ci.org/github/tigerlily/columns.png?branch=master)](http://inch-ci.org/github/tigerlily/columns) [![Dependency Status](https://gemnasium.com/tigerlily/columns.svg)](https://gemnasium.com/tigerlily/columns)
+# Columns [![Build Status](https://travis-ci.org/tigerlily/columns.svg?branch=master)](https://travis-ci.org/tigerlily/columns) [![Gem Version](https://badge.fury.io/rb/columns.svg)](http://badge.fury.io/rb/columns) [![Inline docs](http://inch-ci.org/github/tigerlily/columns.png?branch=master)](http://inch-ci.org/github/tigerlily/columns) [![Dependency Status](https://gemnasium.com/tigerlily/columns.svg)](https://gemnasium.com/tigerlily/columns)
 
 Annotates activerecord models using `db/schema.rb`.
 
